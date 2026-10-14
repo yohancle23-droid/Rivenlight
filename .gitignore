@@ -7,3 +7,6 @@ Build/
 *.sln
 *.vsconfig
 .vscode/
+
+# 유료 모션 팩(Fab 라이선스): 공개 저장소에 올리지 않음
+Content/BrutalDoubleAxeSet/
