@@ -8,7 +8,7 @@ Fab 라이선스 때문에 아래 폴더는 `.gitignore`로 제외했습니다. 
 
 | 폴더 | 용도 | 비고 |
 |---|---|---|
-| `Content/BrutalDoubleAxeSet/` | 보스 탈리스 리본 모션/메시 | 이동 모션 `move_run_front` 에셋에서 "루트 강제 잠금"을 켜야 메시가 캡슐을 벗어나지 않음 |
+| `Content/BrutalDoubleAxeSet/` | 보스 탈리스 리본 모션/메시 | `move_run_front`(보스 이동)와 `Combo01`(플레이어 공격) 에셋에서 "루트 강제 잠금"을 켜야 메시가 캡슐을 벗어나지 않음 |
 | `Content/Katanas/` | 플레이어 카타나 (`SM_DaiKatana` 사용) | 5.8 호환 목록에 없어 5.2 프로젝트에 추가한 뒤 폴더를 복사해 사용 |
 | `Content/Cyberman/` | 시도 후 보류한 플레이어 몸체 | 현재 사용하지 않음 |
 
