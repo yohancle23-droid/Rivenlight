@@ -14,3 +14,6 @@ Content/Katanas/
 Content/Cyberman/
 Content/DarkKnight/
 Content/Dark_Knight/
+# 리타게팅 실험용(Dark Knight IK 릭에 의존): 로컬에서만 보관
+Content/Characters/Mannequins/Meshes/IK_SKM_Manny_Simple.uasset
+Content/Characters/Mannequins/Meshes/RTG_Manny_to_DarkKnight.uasset
