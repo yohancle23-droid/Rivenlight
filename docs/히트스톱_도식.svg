@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo',sans-serif">
+  <rect width="1000" height="620" fill="#14161c"/>
+  <text x="40" y="44" fill="#fff" font-size="24" font-weight="700">BreakHitStop 시간 흐름 (갑옷 파괴 순간)</text>
+  <text x="40" y="70" fill="#9aa4b2" font-size="14">가로 = 실제 시간(초), 세로 = 게임 시간이 흐르는 속도 (1.0 = 정상)</text>
+
+  <!-- axes: x0=100, 500px per real second; y: 1.0 at 150, 0 at 330 (180px per 1.0) -->
+  <line x1="100" y1="330" x2="900" y2="330" stroke="#5b6472" stroke-width="2"/>
+  <line x1="100" y1="130" x2="100" y2="330" stroke="#5b6472" stroke-width="2"/>
+  <text x="62" y="156" fill="#9aa4b2" font-size="13">1.0</text>
+  <text x="62" y="278" fill="#9aa4b2" font-size="13">0.3</text>
+  <text x="56" y="326" fill="#9aa4b2" font-size="13">0.02</text>
+  <line x1="100" y1="150" x2="900" y2="150" stroke="#2a2f3a" stroke-dasharray="4 4"/>
+
+  <!-- segments -->
+  <rect x="100" y="150" width="300" height="180" fill="#d64545" opacity="0.15"/>
+  <rect x="400" y="150" width="333" height="180" fill="#f0a030" opacity="0.15"/>
+  <rect x="733" y="150" width="167" height="180" fill="#3fb37f" opacity="0.15"/>
+
+  <!-- speed curve -->
+  <polyline points="100,150 100,326 400,326 400,276 733,276 733,150 900,150" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- labels in segments -->
+  <text x="125" y="210" fill="#ff8a8a" font-size="17" font-weight="700">① 정지</text>
+  <text x="125" y="234" fill="#ffb3b3" font-size="13">속도 0.02배</text>
+  <text x="125" y="254" fill="#ffb3b3" font-size="13">실제 약 0.6초</text>
+  <text x="425" y="210" fill="#ffc46b" font-size="17" font-weight="700">② 슬로모션</text>
+  <text x="425" y="234" fill="#ffd9a0" font-size="13">속도 0.3배</text>
+  <text x="425" y="254" fill="#ffd9a0" font-size="13">실제 약 0.67초</text>
+  <text x="752" y="210" fill="#6fe0ae" font-size="17" font-weight="700">③ 정상</text>
+  <text x="752" y="234" fill="#a6efce" font-size="13">속도 1.0배</text>
+
+  <!-- x ticks -->
+  <text x="92" y="352" fill="#9aa4b2" font-size="13">0</text>
+  <text x="388" y="352" fill="#9aa4b2" font-size="13">0.6s</text>
+  <text x="713" y="352" fill="#9aa4b2" font-size="13">1.27s</text>
+  <text x="440" y="378" fill="#9aa4b2" font-size="13">실제 경과 시간 →</text>
+
+  <!-- node chain -->
+  <text x="40" y="420" fill="#fff" font-size="16" font-weight="700">블루프린트 노드 순서 (BP_TalisRibbon › 이벤트 그래프)</text>
+  <g font-size="13" text-anchor="middle">
+    <rect x="40" y="440" width="150" height="62" rx="8" fill="#7a1f1f" stroke="#d64545"/>
+    <text x="115" y="466" fill="#fff" font-weight="700">BreakHitStop</text>
+    <text x="115" y="486" fill="#ffd0d0">Custom Event</text>
+
+    <rect x="215" y="440" width="150" height="62" rx="8" fill="#1d3550" stroke="#4a90d9"/>
+    <text x="290" y="466" fill="#fff" font-weight="700">Set Time Dilation</text>
+    <text x="290" y="486" fill="#cfe4ff">0.02</text>
+
+    <rect x="390" y="440" width="150" height="62" rx="8" fill="#243a2c" stroke="#3fb37f"/>
+    <text x="465" y="466" fill="#fff" font-weight="700">Delay</text>
+    <text x="465" y="486" fill="#c9f0dd">0.012</text>
+
+    <rect x="565" y="440" width="150" height="62" rx="8" fill="#1d3550" stroke="#4a90d9"/>
+    <text x="640" y="466" fill="#fff" font-weight="700">Set Time Dilation</text>
+    <text x="640" y="486" fill="#cfe4ff">0.3</text>
+
+    <rect x="740" y="440" width="110" height="62" rx="8" fill="#243a2c" stroke="#3fb37f"/>
+    <text x="795" y="466" fill="#fff" font-weight="700">Delay</text>
+    <text x="795" y="486" fill="#c9f0dd">0.2</text>
+
+    <rect x="860" y="440" width="110" height="62" rx="8" fill="#1d3550" stroke="#4a90d9"/>
+    <text x="915" y="466" fill="#fff" font-weight="700">Set Time Dilation</text>
+    <text x="915" y="486" fill="#cfe4ff">1.0</text>
+  </g>
+  <g stroke="#9aa4b2" stroke-width="2" fill="none">
+    <path d="M190 471 H212"/><path d="M365 471 H387"/><path d="M540 471 H562"/><path d="M715 471 H737"/><path d="M850 471 H857"/>
+  </g>
+
+  <!-- formula -->
+  <rect x="40" y="530" width="930" height="64" rx="10" fill="#1b1f28" stroke="#2f3644"/>
+  <text x="60" y="558" fill="#fff" font-size="15" font-weight="700">실제 시간 = Delay ÷ Time Dilation</text>
+  <text x="60" y="580" fill="#9aa4b2" font-size="13.5">Delay도 느려진 게임 시간으로 센다. 0.012 ÷ 0.02 = 0.6초, 0.2 ÷ 0.3 = 약 0.67초. 값을 바꿀 땐 이 식으로 실제 시간을 먼저 계산할 것.</text>
+</svg>
