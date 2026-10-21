@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" font-family="sans-serif">
+<rect width="960" height="640" fill="#fafafa"/>
+<text x="30" y="40" font-size="22" font-weight="bold" fill="#222">갑옷 파괴 순간 타격감 연출 (실시간 기준)</text>
+<text x="30" y="64" font-size="13" fill="#555">그로기 시작 = 갑옷 파괴 = BreakArmor 호출 시점이 0초. 일반 타격에는 쓰지 않고 파괴 순간에만 한 번에 사용.</text>
+<line x1="300" y1="90" x2="300" y2="520" stroke="#ddd"/>
+<text x="300" y="82" font-size="12" text-anchor="middle" fill="#666">0.0s</text>
+<line x1="380" y1="90" x2="380" y2="520" stroke="#ddd"/>
+<text x="380" y="82" font-size="12" text-anchor="middle" fill="#666">0.2s</text>
+<line x1="460" y1="90" x2="460" y2="520" stroke="#ddd"/>
+<text x="460" y="82" font-size="12" text-anchor="middle" fill="#666">0.4s</text>
+<line x1="540" y1="90" x2="540" y2="520" stroke="#ddd"/>
+<text x="540" y="82" font-size="12" text-anchor="middle" fill="#666">0.6s</text>
+<line x1="620" y1="90" x2="620" y2="520" stroke="#ddd"/>
+<text x="620" y="82" font-size="12" text-anchor="middle" fill="#666">0.8s</text>
+<line x1="700" y1="90" x2="700" y2="520" stroke="#ddd"/>
+<text x="700" y="82" font-size="12" text-anchor="middle" fill="#666">1.0s</text>
+<line x1="780" y1="90" x2="780" y2="520" stroke="#ddd"/>
+<text x="780" y="82" font-size="12" text-anchor="middle" fill="#666">1.2s</text>
+<line x1="860" y1="90" x2="860" y2="520" stroke="#ddd"/>
+<text x="860" y="82" font-size="12" text-anchor="middle" fill="#666">1.4s</text>
+<text x="30" y="116" font-size="14" font-weight="bold" fill="#222">① 히트스톱</text>
+<text x="30" y="132" font-size="11" fill="#666">0.02배 · 실시간 0.6초</text>
+<rect x="300" y="104" width="240" height="26" rx="4" fill="#2e7d32"/>
+<text x="548" y="122" font-size="12" fill="#333">완료</text>
+<text x="30" y="158" font-size="14" font-weight="bold" fill="#222">② 슬로모션 꼬리</text>
+<text x="30" y="174" font-size="11" fill="#666">0.3배 · 실시간 약 0.67초</text>
+<rect x="540" y="146" width="268" height="26" rx="4" fill="#2e7d32"/>
+<text x="816" y="164" font-size="12" fill="#333">완료</text>
+<text x="30" y="200" font-size="14" font-weight="bold" fill="#222">③ 카메라 셰이크</text>
+<text x="30" y="216" font-size="11" fill="#666">CS_PlayerHit Scale 3.0</text>
+<rect x="300" y="188" width="320" height="26" rx="4" fill="#9e9e9e"/>
+<text x="628" y="206" font-size="12" fill="#333">노드 있음 · 현재 OFF</text>
+<text x="30" y="242" font-size="14" font-weight="bold" fill="#222">④ FOV 펀치</text>
+<text x="30" y="258" font-size="11" fill="#666">90 → 75 → 90</text>
+<rect x="300" y="230" width="240" height="26" rx="4" fill="#2e7d32"/>
+<text x="548" y="248" font-size="12" fill="#333">완료</text>
+<text x="30" y="284" font-size="14" font-weight="bold" fill="#222">⑤ 히트 플래시</text>
+<text x="30" y="300" font-size="11" fill="#666">Armor 머티리얼 FlashAmount</text>
+<rect x="300" y="272" width="120" height="26" rx="4" fill="#f9a825"/>
+<text x="428" y="290" font-size="12" fill="#333">다음</text>
+<text x="30" y="326" font-size="14" font-weight="bold" fill="#222">⑥ 어깨 FX</text>
+<text x="30" y="342" font-size="11" fill="#666">타락한 빛 · 20초 유지</text>
+<rect x="300" y="314" width="508" height="26" rx="4" fill="#bdbdbd"/>
+<text x="816" y="332" font-size="12" fill="#333">대기</text>
+<text x="30" y="368" font-size="14" font-weight="bold" fill="#222">⑦ 갑옷 낙하</text>
+<text x="30" y="384" font-size="11" fill="#666">복제 메시 + 물리</text>
+<rect x="340" y="356" width="468" height="26" rx="4" fill="#bdbdbd"/>
+<text x="816" y="374" font-size="12" fill="#333">대기</text>
+<text x="30" y="410" font-size="14" font-weight="bold" fill="#222">⑧ 플레이어 넉백</text>
+<text x="30" y="426" font-size="11" fill="#666">Launch Character</text>
+<rect x="300" y="398" width="160" height="26" rx="4" fill="#bdbdbd"/>
+<text x="468" y="416" font-size="12" fill="#333">대기</text>
+<text x="30" y="452" font-size="14" font-weight="bold" fill="#222">⑨ 보스 본 경직</text>
+<text x="30" y="468" font-size="11" fill="#666">상체 흔들림</text>
+<rect x="300" y="440" width="240" height="26" rx="4" fill="#bdbdbd"/>
+<text x="548" y="458" font-size="12" fill="#333">대기</text>
+<text x="30" y="494" font-size="14" font-weight="bold" fill="#222">⑩ 사운드</text>
+<text x="30" y="510" font-size="11" fill="#666">파괴음 · 저음 임팩트</text>
+<rect x="300" y="482" width="120" height="26" rx="4" fill="#bdbdbd"/>
+<text x="428" y="500" font-size="12" fill="#333">대기</text>
+<text x="30" y="560" font-size="13" fill="#222">초록 = 완료 · 노랑 = 진행 예정 · 회색 = 대기/꺼짐</text>
+<text x="30" y="584" font-size="13" fill="#222">구간 길이는 히트스톱(0.6초)+슬로모션(0.67초)에 맞춘 배치이고, 대기 항목의 길이는 임시값.</text>
+<text x="30" y="608" font-size="13" fill="#222">호출 순서: BreakArmor 끝 → (셰이크) → FOVPunch → BreakHitStop</text>
+</svg>
