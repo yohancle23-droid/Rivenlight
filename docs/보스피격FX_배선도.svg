@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" font-family="sans-serif" font-size="14">
+<defs>
+<marker id="w" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker>
+<marker id="b" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1a73e8"/></marker>
+<marker id="y" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#d89000"/></marker>
+</defs>
+<rect width="1000" height="640" fill="#fafafa"/>
+<text x="20" y="30" font-size="18" font-weight="bold">AC_MeleeTrace › SweepSegment 목표 배선 (흰 선 = 실행 순서, 파란 선 = Hit Actor, 노란 선 = 위치)</text>
+
+<rect x="20" y="70" width="170" height="60" rx="8" fill="#fff" stroke="#333"/>
+<text x="30" y="95" font-weight="bold">Take Damage</text><text x="30" y="115">Damage Amount 10.0</text>
+
+<rect x="250" y="70" width="230" height="90" rx="8" fill="#fff" stroke="#333"/>
+<text x="260" y="95" font-weight="bold">Cast To BP_ThirdPersonCharacter</text>
+<text x="260" y="118">위쪽 ▷ = 성공 (플레이어가 맞음)</text>
+<text x="260" y="140">Cast Failed = 보스가 맞음</text>
+
+<line x1="190" y1="100" x2="248" y2="100" stroke="#222" stroke-width="2.5" marker-end="url(#w)"/>
+
+<rect x="560" y="30" width="400" height="140" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+<text x="570" y="55" font-weight="bold">A. Spawn Emitter at Location (보스가 맞음)</text>
+<text x="570" y="78">Emitter Template = P_HitSpot</text>
+<text x="570" y="100">Location ← Get Actor Location › Return Value</text>
+<text x="570" y="122" fill="#c62828" font-weight="bold">Scale = 0.5 / 0.5 / 0.5  (지금 1.0 → 고칠 것)</text>
+
+<rect x="560" y="190" width="400" height="110" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+<text x="570" y="215" font-weight="bold">B. Spawn Emitter at Location (플레이어가 맞음)</text>
+<text x="570" y="238">Emitter Template = P_HitSpot</text>
+<text x="570" y="260">Location ← Get Actor Location › Return Value</text>
+<text x="570" y="282">Scale = 0.25 / 0.25 / 0.25</text>
+
+<path d="M480,140 C520,140 520,70 558,70" fill="none" stroke="#222" stroke-width="2.5" marker-end="url(#w)"/>
+<text x="490" y="62" font-size="12">Cast Failed → A</text>
+<path d="M480,95 C530,95 520,230 558,230" fill="none" stroke="#222" stroke-width="2.5" marker-end="url(#w)"/>
+<text x="470" y="215" font-size="12">성공 ▷ → B</text>
+
+<rect x="20" y="360" width="230" height="170" rx="8" fill="#fff" stroke="#333"/>
+<text x="30" y="385" font-weight="bold">Break Hit Result</text>
+<text x="30" y="410">Impact Point (이제 안 씀)</text>
+<circle cx="236" cy="480" r="6" fill="#1a73e8"/><text x="30" y="485">Hit Actor ●</text>
+
+<rect x="330" y="400" width="250" height="110" rx="8" fill="#fffde7" stroke="#f9a825" stroke-width="3"/>
+<text x="340" y="425" font-weight="bold">Get Actor Location  ★ 이것만 사용</text>
+<text x="340" y="448">Target ← Break Hit Result › Hit Actor</text>
+<text x="340" y="472">Return Value → A 와 B 의 Location 둘 다</text>
+<line x1="242" y1="480" x2="328" y2="470" stroke="#1a73e8" stroke-width="2.5" marker-end="url(#b)"/>
+
+<path d="M580,450 C700,450 720,170 740,170" fill="none" stroke="#d89000" stroke-width="2.5"/>
+<path d="M580,460 C660,460 680,285 740,285" fill="none" stroke="#d89000" stroke-width="2.5"/>
+<text x="600" y="500" font-size="12" fill="#a06000">(노란 선 2개: 하나는 A, 하나는 B의 Location 핀으로)</text>
+
+<rect x="20" y="560" width="940" height="60" rx="8" fill="#ffebee" stroke="#c62828"/>
+<text x="30" y="585" font-weight="bold" fill="#c62828">지울 것: Target이 "As BP Third Person Character"에서 오는 Get Actor Location (보스가 맞을 땐 비어 있어서 쓰면 안 됨)</text>
+<text x="30" y="608">남길 것: Target이 "Break Hit Result › Hit Actor"에서 오는 Get Actor Location 1개</text>
+</svg>
