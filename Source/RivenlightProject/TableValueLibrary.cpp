@@ -1,6 +1,7 @@
 #include "TableValueLibrary.h"
 
 #include "Engine/DataTable.h"
+#include "Engine/World.h"
 #include "MonsterTableRows.h"
 #include "TuningTableRows.h"
 #include "UObject/UnrealType.h"
@@ -78,7 +79,36 @@ namespace
 			WarnOnce(FString::Printf(TEXT("nocol:%s:%s"), TableLabel, *Column.ToString()), FString::Printf(TEXT("%s 표에 숫자 칸 %s이 없어 기본값을 씀"), TableLabel, *Column.ToString()));
 			return DefaultValue;
 		}
-		return static_cast<float>(Out);
+		const float Value = static_cast<float>(Out);
+
+		// 확인용 로그: 줄·칸마다 값이 처음 읽힐 때와 바뀔 때만 한 줄 남긴다 (매 프레임 부르는 노드에서 넘치지 않게)
+		// 게임 월드가 새로 만들어질 때(PIE를 다시 켤 때)마다 기록을 지워서, 시작할 때마다 처음 읽은 값이 다시 찍힌다
+		static TMap<FString, float> LastLogged;
+		static bool bResetBound = false;
+		if (!bResetBound)
+		{
+			bResetBound = true;
+			FWorldDelegates::OnPostWorldInitialization.AddLambda([](UWorld* World, const UWorld::InitializationValues)
+			{
+				if (World && World->IsGameWorld())
+				{
+					LastLogged.Empty();
+				}
+			});
+		}
+		const FString LogKey = FString::Printf(TEXT("%s:%s:%s"), TableLabel, *RowName.ToString(), *Column.ToString());
+		const float* Prev = LastLogged.Find(LogKey);
+		if (!Prev)
+		{
+			UE_LOG(LogTableValue, Log, TEXT("[표값] %s %s.%s = %.4f (기본값 %.4f)"), TableLabel, *RowName.ToString(), *Column.ToString(), Value, DefaultValue);
+			LastLogged.Add(LogKey, Value);
+		}
+		else if (!FMath::IsNearlyEqual(*Prev, Value))
+		{
+			UE_LOG(LogTableValue, Log, TEXT("[표값] %s %s.%s 바뀜: %.4f -> %.4f (기본값 %.4f)"), TableLabel, *RowName.ToString(), *Column.ToString(), *Prev, Value, DefaultValue);
+			LastLogged[LogKey] = Value;
+		}
+		return Value;
 	}
 }
 
