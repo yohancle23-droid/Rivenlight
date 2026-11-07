@@ -31,6 +31,15 @@ void UCharacterDataComponent::TickComponent(float DeltaTime, ELevelTick TickType
 	}
 	if (AActor* Owner = GetOwner())
 	{
+		if (USpringArmComponent* Arm = Owner->FindComponentByClass<USpringArmComponent>())
+		{
+			const float Len = Arm->TargetArmLength;
+			if (LastWatchedArm < 0.f || !FMath::IsNearlyEqual(Len, LastWatchedArm, 0.5f))
+			{
+				UE_LOG(LogCharacterData, Log, TEXT("[카메라거리감시] %.1f -> %.1f (실시간 %.3f초, 시간배율 %.4f)"), LastWatchedArm, Len, RealSec, Dilation);
+				LastWatchedArm = Len;
+			}
+		}
 		if (UCameraComponent* Camera = Owner->FindComponentByClass<UCameraComponent>())
 		{
 			const float Fov = Camera->FieldOfView;

@@ -44,6 +44,10 @@ struct FCharacterRow : public FTableRowBase
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera")
 	float CameraArmMaxCm = 0.f;
+
+	// 플레이어가 맞았을 때 카메라 흔들림 크기 (1.0 = 기본 세기). Start Camera Shake의 Scale 핀에 들어간다
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera")
+	float HitShakeScale = 1.f;
 };
 
 // DT_Tuning: 연출, 타격감, 스킬 타이밍 같은 낱개 설정값. 한 줄 = 설정 하나.

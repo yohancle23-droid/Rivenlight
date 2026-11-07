@@ -56,6 +56,7 @@ private:
 	FCharacterRow LastRow;
 	float LastWatchedFov = -1.f;
 	float LastWatchedDilation = -1.f;
+	float LastWatchedArm = -1.f;
 
 	void Refresh();
 	static bool SameRow(const FCharacterRow& A, const FCharacterRow& B);
