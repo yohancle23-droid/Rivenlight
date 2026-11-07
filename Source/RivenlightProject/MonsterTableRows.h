@@ -23,7 +23,7 @@ struct FMonsterListRow : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Info")
 	FName StatusId;
 
-	// DT_MonsterSkillSet의 행 이름 (아직 없으면 None)
+	// 이 몬스터가 쓰는 스킬 묶음 ID. DT_MonsterSkill에서 SkillSetId 칸이 같은 줄들이 이 몬스터의 스킬이다 (없으면 None)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Info")
 	FName SkillSetId;
 
@@ -81,4 +81,40 @@ struct FMonsterStatusRow : public FTableRowBase
 	// 플레이어 한 타당 쌓이는 게이지 비율 (플레이어 1타 100 x 0.05 = 5)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stagger")
 	float StaggerPerDamage = 0.f;
+};
+
+// DT_MonsterSkill: 몬스터 스킬의 낱개 설정값. 한 줄 = 스킬 설정 하나 (줄 이름이 곧 설정 이름, 예: DASH_MIN_DISTANCE_CM).
+// DT_MonsterList의 SkillSetId와 같은 SkillSetId를 가진 줄들이 그 몬스터의 스킬이다.
+USTRUCT(BlueprintType)
+struct FMonsterSkillRow : public FTableRowBase
+{
+	GENERATED_BODY()
+
+	// 이 줄이 속한 스킬 묶음 (DT_MonsterList의 SkillSetId와 같은 값)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Info")
+	FName SkillSetId;
+
+	// 이 줄이 속한 스킬 (예: SKILL_TALIS_DASH)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Info")
+	FName SkillId;
+
+	// 값
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Value")
+	float Value = 0.f;
+
+	// 단위 (sec, cm, deg, x, frame 등)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Value")
+	FString Unit;
+
+	// Confirmed(확정) / Temp(임시) / NeedsCheck(확인 필요)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Info")
+	FName Status;
+
+	// 이 값으로 정한 이유
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Info")
+	FString Reason;
+
+	// 이 값을 쓰는 곳 (블루프린트 › 그래프 › 노드)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Info")
+	FString Where;
 };

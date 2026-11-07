@@ -14,7 +14,7 @@ class RIVENLIGHTPROJECT_API UTableValueLibrary : public UBlueprintFunctionLibrar
 	GENERATED_BODY()
 
 public:
-	// DT_Tuning의 Value 칸. RowName은 줄 이름 (예: BREAK_HITSTOP_DELAY)
+	// DT_System(옛 이름 DT_Tuning)의 Value 칸. RowName은 줄 이름 (예: BREAK_HITSTOP_DELAY)
 	UFUNCTION(BlueprintPure, Category = "Table Value", meta = (DisplayName = "Get Tuning"))
 	static float GetTuning(FName RowName, float DefaultValue);
 
@@ -25,6 +25,10 @@ public:
 	// DT_MonsterStatus의 숫자 칸 (예: Hp, StaggerPerDamage)
 	UFUNCTION(BlueprintPure, Category = "Table Value", meta = (DisplayName = "Get Monster Status"))
 	static float GetMonsterStatus(FName RowName, FName Column, float DefaultValue);
+
+	// DT_MonsterSkill의 Value 칸. RowName은 줄 이름 (예: DASH_MIN_DISTANCE_CM)
+	UFUNCTION(BlueprintPure, Category = "Table Value", meta = (DisplayName = "Get Monster Skill"))
+	static float GetMonsterSkill(FName RowName, float DefaultValue);
 
 	// DT_MonsterList의 숫자 칸 (예: HitReactCooldownSeconds)
 	UFUNCTION(BlueprintPure, Category = "Table Value", meta = (DisplayName = "Get Monster List"))

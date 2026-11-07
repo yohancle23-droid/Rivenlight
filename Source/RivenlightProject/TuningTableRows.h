@@ -50,7 +50,7 @@ struct FCharacterRow : public FTableRowBase
 	float HitShakeScale = 1.f;
 };
 
-// DT_Tuning: 연출, 타격감, 스킬 타이밍 같은 낱개 설정값. 한 줄 = 설정 하나.
+// DT_System(옛 이름 DT_Tuning): 연출, 타격감, 스킬 타이밍 같은 낱개 설정값. 한 줄 = 설정 하나.
 // 줄 이름이 곧 설정 이름이다 (예: BREAK_HITSTOP_TIME_DILATION).
 USTRUCT(BlueprintType)
 struct FTuningValueRow : public FTableRowBase

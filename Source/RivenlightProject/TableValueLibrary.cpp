@@ -115,11 +115,25 @@ namespace
 float UTableValueLibrary::GetTuning(FName RowName, float DefaultValue)
 {
 	static TWeakObjectPtr<UDataTable> Cache;
+	// 표 이름을 DT_Tuning에서 DT_System으로 바꾸는 중이라 새 이름을 먼저, 옛 이름을 뒤에 둔다
 	UDataTable* Table = FindTable(Cache, {
+		TEXT("/Game/DataTable/Monster/DT_System.DT_System"),
+		TEXT("/Game/DataTable/DT_System.DT_System"),
+		TEXT("/Game/DataTable/System/DT_System.DT_System"),
 		TEXT("/Game/DataTable/DT_Tuning.DT_Tuning"),
 		TEXT("/Game/DataTable/Tuning/DT_Tuning.DT_Tuning"),
 		TEXT("/Game/DataTable/Monster/DT_Tuning.DT_Tuning") });
-	return ReadFromTable(Table, TEXT("DT_Tuning"), RowName, FName(TEXT("Value")), DefaultValue);
+	return ReadFromTable(Table, TEXT("DT_System"), RowName, FName(TEXT("Value")), DefaultValue);
+}
+
+float UTableValueLibrary::GetMonsterSkill(FName RowName, float DefaultValue)
+{
+	static TWeakObjectPtr<UDataTable> Cache;
+	UDataTable* Table = FindTable(Cache, {
+		TEXT("/Game/DataTable/Monster/DT_MonsterSkill.DT_MonsterSkill"),
+		TEXT("/Game/DataTable/DT_MonsterSkill.DT_MonsterSkill"),
+		TEXT("/Game/DataTable/Skill/DT_MonsterSkill.DT_MonsterSkill") });
+	return ReadFromTable(Table, TEXT("DT_MonsterSkill"), RowName, FName(TEXT("Value")), DefaultValue);
 }
 
 float UTableValueLibrary::GetCharacter(FName RowName, FName Column, float DefaultValue)
